@@ -4,11 +4,13 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @posts = Post.where("recipient_id = #{@user.id}").order(:created_at).reverse_order
     
+
     @profile_photo = nil
     if @user.profile_photo.attached?
       @profile_photo = url_for(@user.profile_photo)
     else @profile_photo = "/anonymous_profile_phot.jpg"
     end
+
 
   end
 

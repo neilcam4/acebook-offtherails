@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(body: comment_params["body"], user_id: session[:user_id], post_id: comment_params["post_id"])
     redirect_to post_path(@post)
+    p @comment
   end
 
   def destroy
